@@ -1,0 +1,8 @@
+{
+  "name": "Lumina Luxe - AI Powered E-commerce",
+  "description": "A premium e-commerce experience featuring an AI-driven personal shopping assistant and a modern, responsive design.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
