@@ -2,8 +2,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { MOCK_PRODUCTS } from "../constants";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 const SYSTEM_PROMPT = `
 You are Lumina, an elite personal shopping assistant for "Lumina Luxe".
 Your goal is to help users find products, offer styling advice, and answer questions about the catalog.
@@ -21,6 +19,8 @@ Guidelines:
 
 export async function getChatResponse(history: { role: 'user' | 'model', parts: { text: string }[] }[]) {
   try {
+    // Initialize inside the function to be safer and ensure the current API key is used
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: history,
