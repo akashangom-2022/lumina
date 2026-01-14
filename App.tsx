@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ProductCard from './components/ProductCard';
-import CartDrawer from './components/CartDrawer';
-import AIAssistant from './components/AIAssistant';
-import { MOCK_PRODUCTS, CATEGORIES } from './constants';
-import { Product, CartItem } from './types';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import ProductCard from './components/ProductCard.tsx';
+import CartDrawer from './components/CartDrawer.tsx';
+import AIAssistant from './components/AIAssistant.tsx';
+import { MOCK_PRODUCTS, CATEGORIES } from './constants.tsx';
+import { Product, CartItem } from './types.ts';
 
 const HomePage: React.FC<{ onAddToCart: (p: Product) => void }> = ({ onAddToCart }) => {
   const featuredProducts = MOCK_PRODUCTS.filter(p => p.featured);
@@ -187,7 +187,6 @@ const App: React.FC = () => {
             <div className="mt-12 border-t border-gray-100 pt-8 flex items-center justify-between">
               <p className="text-base text-gray-400">&copy; 2024 Lumina Luxe. All rights reserved.</p>
               <div className="flex space-x-6">
-                {/* Social icons could go here */}
               </div>
             </div>
           </div>

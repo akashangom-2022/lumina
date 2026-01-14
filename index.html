@@ -27,6 +27,10 @@
             background: #555;
         }
     </style>
+    <script>
+      // Shim process for browser environment
+      window.process = window.process || { env: { API_KEY: "" } };
+    </script>
     <script type="importmap">
     {
       "imports": {
@@ -42,7 +46,18 @@
 </head>
 <body class="bg-gray-50 text-gray-900 overflow-x-hidden">
     <div id="root"></div>
-    <!-- Explicitly link the entry point for the React application -->
-    <script type="module" src="index.tsx"></script>
+    <!-- Explicitly link the entry point for the React application with extension -->
+    <script type="module" src="./index.tsx"></script>
+    <script>
+      // Basic error logging for production debugging
+      window.onerror = function(msg, url, line, col, error) {
+        console.error("Global error: ", msg, "at", url, ":", line);
+        const root = document.getElementById('root');
+        if (root && !root.innerHTML) {
+          root.innerHTML = '<div style="padding: 20px; color: red;">Failed to load application. Check console for details.</div>';
+        }
+        return false;
+      };
+    </script>
 </body>
 </html>
